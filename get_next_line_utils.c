@@ -6,10 +6,10 @@
 /*   By: mde-figu <mde-figu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 22:47:51 by mde-figu          #+#    #+#             */
-/*   Updated: 2021/02/23 23:15:14 by mde-figu         ###   ########.fr       */
+/*   Updated: 2021/02/24 12:44:04 by mde-figu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t		get_next_line_utils()
+/* size_t		get_next_line_utils() */
