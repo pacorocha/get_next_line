@@ -1,29 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mde-figu <mde-figu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/23 20:44:44 by mde-figu          #+#    #+#             */
-/*   Updated: 2021/02/23 23:14:20 by mde-figu         ###   ########.fr       */
+/*   Created: 2021/02/23 22:47:51 by mde-figu          #+#    #+#             */
+/*   Updated: 2021/02/23 23:15:14 by mde-figu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		get_next_line(int fd, char **line)
-{
-	int[] readbuffer;
-	size_t bufsize;
-
-	bufsize = read(fd, readbuffer, BUFFER_SIZE);
-	readbuffer = malloc(bufsize);
-
-	if (BUFFER_SIZE <= 0)
-	{
-		free(readbuffer);
-		return (-1);
-	}
-
-}
+size_t		get_next_line_utils()
