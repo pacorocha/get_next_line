@@ -15,9 +15,10 @@
 char		**buf_gtr_t_line(char **return_string, char *bufferline,
 			size_t linesize, char **line)
 {
-	char	*str_tmp;
+	char	*str_tmp = 0;
 //	int		i;
 	ft_bzero(str_tmp, linesize);
+	return_string = (char **)bufferline;
 	str_tmp = ft_strchr((char *)return_string, '\n');
 	return_string[linesize + 1] = '\0';
 	str_tmp = (char *)*return_string;
@@ -45,13 +46,9 @@ size_t		len_to_nl(char *readbuffer, bool nl_found)
 	i = 0;
 	while (readbuffer[i] != 0)
 	{
+		i++;
 		if (readbuffer[i] == '\n')
-		{
-		nl_found = true;
-		i++;
-		return ((size_t)i);
-		}
-		i++;
+			readbuffer[i] == 0;
 	}
 	return (i); // qualquer \n indevido, incluir i + 1
 }
@@ -61,7 +58,6 @@ int		get_next_line(int fd, char **line)
 	static char readbuffer[BUFFER_SIZE + 1];
 	int	readout;
 	char *bufferline;
-	int *buffers_end;
 	static char **return_string;
 	//static int	*last_read_char;
 	static bool nl_found;
@@ -87,7 +83,7 @@ int		get_next_line(int fd, char **line)
 	}
 	if (BUFFER_SIZE > linesize)
 		buf_gtr_t_line(return_string, bufferline, linesize, line);// << VAZANDO MEMÓRIA OLHAR memset
-	buf_less_eq_t_line(return_string, bufferline, linesize, line); 
+	buf_less_eq_t_line(return_string, bufferline, linesize, line);
 	//free (bufferline);
 	return (1);
 }
