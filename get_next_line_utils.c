@@ -6,11 +6,29 @@
 /*   By: mde-figu <mde-figu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/23 22:47:51 by mde-figu          #+#    #+#             */
-/*   Updated: 2021/02/24 19:59:55 by mde-figu         ###   ########.fr       */
+/*   Updated: 2021/03/03 10:09:37 by mde-figu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void		*ft_memset(void *s, int c, size_t len)
+{
+	unsigned char *p;
+
+	p = s;
+	while (len--)
+	{
+		*p++ = (unsigned char)c;
+	}
+	return (s);
+}
+
+void		ft_bzero(void *s, size_t n)
+{
+	if (sizeof(s) >= 0)
+		ft_memset(s, '\0', n);
+}
 
 size_t		ft_strlen(const char *str)
 {
@@ -23,7 +41,8 @@ size_t		ft_strlen(const char *str)
 	}
 	return (i);
 }
-size_t		ft_strlcpy(char *dst, const char *src, size_t size)
+
+size_t		ft_strlcpy(char *dst, const char *src, size_t size) // juntar essas duas  v v v 
 {
 	size_t i;
 	size_t j;
@@ -47,38 +66,46 @@ size_t		ft_strlcpy(char *dst, const char *src, size_t size)
 	return (j);
 }
 
-char		*ft_strdup(const char *s)
+char        *ft_strdup(const char *s)
 {
-	int             len;
-	char    *dest;
+    size_t    size;
+    char    *dest;
 
-	len = ft_strlen(s);
-	if (!(dest = (char*)malloc((len + 1) * sizeof(char))))
-		return (NULL);
-	ft_strlcpy(dest, s, (len + 1));
-	return (dest);
+    size = ft_strlen(s) + 1;
+    dest = malloc(size);
+    if (dest == NULL)
+        return (NULL);
+    ft_memcpy(dest, s, size);
+    return (dest);
 }
 
-size_t		ft_strlcat(char *dst, const char *src, size_t dstlen)
+void    *ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t i;
-	size_t j;
+    char    *c_dest;
+    char    *c_src;
 
-	if (dstlen <= ft_strlen(dst))
-		return (ft_strlen(src) + dstlen);
-	i = 0;
-	while (dst[i] != '\0')
-	{
-		i++;
-	}
-	j = 0;
-	while (i + j < dstlen - 1 && src[j] != '\0')
-	{
-		dst[i + j] = src[j];
-		j++;
-	}
-	dst[i + j] = '\0';
-	while (src[j] != '\0')
-		j++;
-	return (i + j);
+    c_dest = (char *)dest;
+    c_src = (char *)src;
+    if ((c_dest != NULL) || (c_src != NULL))
+    {
+        while (n--)
+        {
+            *(c_dest++) = *(c_src++);
+        }
+    }
+    return (dest);
+}
+
+char		*ft_strchr(const char *s, int c)
+{
+		while (*s)
+		{
+				if (*s == (char)c)
+						return ((char *)s);
+				s = s + 1;
+		}
+		if ((char)c == '\0')
+				return ((char *)s);
+		else
+				return (NULL);
 }
